@@ -2,6 +2,7 @@
 
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
+
   # GET /books/1/edit
   def edit; end
 
@@ -9,6 +10,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
+
     if @comment.save
       redirect_to polymorphic_path([@comment.commentable]),
                   notice: t('controllers.common.notice_create', name: Comment.model_name.human)
@@ -48,4 +50,3 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:text, :commentable_type, :commentable_id)
   end
 end
-
