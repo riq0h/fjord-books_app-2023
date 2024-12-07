@@ -264,6 +264,11 @@ Show
 New and Edit
 ****************/
 
+ #avatar {
+  border-radius: 50%;
+  margin: 12px auto 12px auto;
+}
+
 form:not(.button_to) {
   --main-button-fz: 16px;
   --main-button-w: 160px;
