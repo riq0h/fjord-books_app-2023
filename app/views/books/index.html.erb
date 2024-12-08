@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<h1><%= t('views.common.title_index', name: i18n_pluralize(Book.model_name.human)) %></h1>
+<h1><%= t('views.common.title_index', name: Book.model_name.human) %></h1>
 
 <div id="books" class="index-items">
   <% @books.each do |book| %>
@@ -20,5 +20,5 @@
 </nav>
 
 <nav class="page-nav">
-    <%= link_to t('views.common.title_index', name: i18n_pluralize(User.model_name.human.downcase)), users_path %>
+    <%= link_to t('views.common.title_index', name: User.model_name.human), users_path %>
 </nav>
