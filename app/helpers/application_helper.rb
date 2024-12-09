@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# frozen_string_literal: true
-
 module ApplicationHelper
   # localeに応じてエラー件数の表記を変える
   # - 日本語の場合 => 3件のエラー

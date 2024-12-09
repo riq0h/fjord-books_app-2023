@@ -1,19 +1,27 @@
 en:
+  activerecord:
+    attributes:
+      user:
+        postal_code: Postal code
+        address: Address
+        introduction: Introduction
+    models:
+      user: User
   views:
     common:
-      show: "Show this %{name}"
-      edit: "Edit this %{name}"
-      destroy: "Destroy this %{name}"
-      new: "New %{name}"
-      back: "Back to %{name}"
-      delete_confirm: "Are you sure?"
-      title_index: "List of %{name}"
-      title_new: "New %{name}"
-      title_edit: "Editing %{name}"
-      error: error
-      validation_error: "%{errors} prohibited this %{name} from being saved"
+      show: "Show %{name}"
+      edit: "Edit %{name}"
+      destroy: "Delete %{name}"
+      new: "Create new %{name}"
+      back: "Back to %{name} list"
+      delete_confirm: Are you sure?
+      title_index: "%{name} List"
+      title_new: "Create New %{name}"
+      title_edit: "Edit %{name}"
+      error: Error
+      validation_error: "Unable to save %{name} due to %{errors} error(s)"
   controllers:
     common:
       notice_create: "%{name} was successfully created."
       notice_update: "%{name} was successfully updated."
-      notice_destroy: "%{name} was successfully destroyed."
+      notice_destroy: "%{name} was successfully deleted."

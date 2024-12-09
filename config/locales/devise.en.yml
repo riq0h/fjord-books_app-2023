@@ -1,8 +1,9 @@
 en:
-  activerecord:
-    models:
-      user: User
   devise:
+    sessions:
+      new:
+        sign_out: Sign out
     shared:
       links:
+        sign_in_with_provider: "Sign in with %{provider}"
         sign_in_with_provider_strong_html: "Sign in with <strong>%{provider}</strong>"
