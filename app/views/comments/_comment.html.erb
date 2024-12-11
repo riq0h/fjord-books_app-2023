@@ -1,18 +1,22 @@
 <div class="show-item">
   <div>
     <p>
-      <% if comment.user.name.blank? %>
-        <strong><%= Comment.human_attribute_name(:email) %>:</strong>
-        <%= comment.user.email %>
+      <% if comment.user.present? %>
+        <% if comment.user.name.blank? %>
+          <strong><%= Comment.human_attribute_name(:email) %>:</strong>
+          <%= comment.user.email %>
+        <% else %>
+          <strong><%= Comment.human_attribute_name(:name) %>:</strong>
+          <%= comment.user.name %>
+        <% end %>
       <% else %>
-        <strong><%= Comment.human_attribute_name(:name) %>:</strong>
-        <%= comment.user.name %>
+        <em><%= t('views.comments.deleted_user') %></em>
       <% end %>
     </p>
 
     <p>
       <strong><%= Comment.human_attribute_name(:created_at) %>:</strong>
-      <%= l comment.created_at %>
+      <%= l(comment.created_at) if comment.created_at.present? %>
     </p>
 
     <p>
@@ -22,7 +26,7 @@
   </div>
 
   <p>
-    <% if comment.user_id == current_user.id %>
+    <% if comment.user_id == current_user.try(:id) %>
       <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), edit_comment_path(comment) %>
       <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), comment, method: :delete %>
     <% end %>
