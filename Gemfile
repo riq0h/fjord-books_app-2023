@@ -71,7 +71,7 @@ group :development do
   gem 'letter_opener_web'
   # 以下のPRがリリースされたら最新のrubocopを使うようにする
   # https://github.com/fjordllc/rubocop-fjord/pull/16
-  gem 'rubocop', '~> 1.45.1', require: false
+  gem 'rubocop', require: false
   gem 'rubocop-fjord', require: false
   gem 'rubocop-rails', require: false
 end
