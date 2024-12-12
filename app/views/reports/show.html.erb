@@ -6,11 +6,14 @@
 
 <%= render 'shared/comments', commentable: @report %>
 
-<% if @report.mentioned_reports.present? %>
+<% if mentioned_reports = @report.mentioned_reports.presence %>
   <div class="show-item">
     <p><%= t('shared.link.title') %></p>
-    <% @report.mentioned_reports.each do |mention| %>
-      <%= render 'shared/mentions', mention: mention %>
+    <% mentioned_reports.each do |mentioned_report| %>
+      <p>
+        <%= link_to mentioned_report.title, mentioned_report %>
+        <%= t('shared.link.notice_link') %>
+      </p>
     <% end %>
   </div>
 <% end %>
