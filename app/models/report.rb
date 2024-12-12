@@ -7,7 +7,7 @@ class Report < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  has_many :outgoing_mentions, dependent: :destroy
+  has_many :outgoing_mentions, class_name: 'Mention', dependent: :destroy
   has_many :mentioning_reports, through: :outgoing_mentions, source: :mentioned_report
   has_many :reverse_of_mentions, class_name: 'Mention', foreign_key: 'mentioned_report_id', dependent: :destroy,
                                  inverse_of: 'mentioned_report'
