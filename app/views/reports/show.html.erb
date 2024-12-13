@@ -6,7 +6,7 @@
 
 <%= render 'shared/comments', commentable: @report %>
 
-<% if mentioned_reports = @report.mentioned_reports.presence %>
+<% if mentioned_reports = @report.mentioned_reports.order(:created_at, :id).presence %>
   <div class="show-item">
     <p><%= t('shared.link.title') %></p>
     <% mentioned_reports.each do |mentioned_report| %>

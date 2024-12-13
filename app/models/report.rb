@@ -23,15 +23,8 @@ class Report < ApplicationRecord
   end
 
   def create_mention
-    Report.transaction do
-      outgoing_mentions.destroy_all
       ids = content.scan(%r{http://localhost:3000/reports/(\d+)}).flatten.uniq
-      mentioned_report_ids = Report.where(id: ids).where.not(id:).pluck(:id)
-      mentioned_report_ids.each do |id|
-        outgoing_mentions.create!(mentioned_report_id: id)
-      end
-    end
-  rescue ActiveRecord::RecordInvalid => e
-    Rails.logger.error("メンションの作成に失敗しました: #{e.message}")
+      reports = Report.where(id: ids).where.not(id: id)
+      self.mentioning_reports = reports
   end
 end
