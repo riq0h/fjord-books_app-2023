@@ -6,6 +6,18 @@
 
 <%= render 'shared/comments', commentable: @report %>
 
+<% if mentioned_reports = @report.mentioned_reports.order(:created_at, :id).presence %>
+  <div class="show-item">
+    <p><%= t('shared.link.title') %></p>
+    <% mentioned_reports.each do |mentioned_report| %>
+      <p>
+        <%= link_to mentioned_report.title, mentioned_report %>
+        <%= t('shared.link.notice_link') %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
 <nav class="page-nav">
   <% if @report.editable?(current_user) %>
     <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
