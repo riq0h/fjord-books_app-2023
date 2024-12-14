@@ -10,7 +10,7 @@ class BooksController < ApplicationController
 
   # GET /books/1 or /books/1.json
   def show
-    @comments = @book.comments.to_a
+    @comments = @book.comments.with_active_users
     @comment = @book.comments.build
   end
 
