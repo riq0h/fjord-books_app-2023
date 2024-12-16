@@ -9,7 +9,10 @@ class BooksController < ApplicationController
   end
 
   # GET /books/1 or /books/1.json
-  def show; end
+  def show
+    @comments = @book.comments
+    @comment = Comment.new(commentable: @book)
+  end
 
   # GET /books/new
   def new
@@ -25,7 +28,9 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to book_url(@book), notice: t('controllers.common.notice_create', name: Book.model_name.human) }
+        format.html do
+          redirect_to book_url(@book), notice: t('controllers.common.notice_create', name: Book.model_name.human)
+        end
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +43,9 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to book_url(@book), notice: t('controllers.common.notice_update', name: Book.model_name.human) }
+        format.html do
+          redirect_to book_url(@book), notice: t('controllers.common.notice_update', name: Book.model_name.human)
+        end
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit, status: :unprocessable_entity }
