@@ -1,11 +1,24 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  user: one
-  title: MyString
-  content: MyText
-
-two:
-  user: two
-  title: MyString
-  content: MyText
+alice_report:
+  user: alice
+  title: Rubyの学習
+  content: 書籍でRubyを学習した。
+bob_report:
+  user: bob
+  title: JavaScriptの学習
+  content: 書籍でJavaScriptを学習した。
+report_id1:
+  id: 1
+  user: alice
+  title: 24時間勉強
+  content: 息も吸っていない。
+report_id2:
+  id: 2
+  user: alice
+  title: 24時間睡眠
+  content: ただし夢の中で睡眠学習しているものとする。
+report_id3:
+  id: 3
+  user: alice
+  title: 48時間勉強
+  content: 生まれてから一度も寝ていない人にマウントを取られた。
