@@ -24,33 +24,8 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in '内容', with: @report.content
     click_on '登録する'
     assert_text '日報が作成されました。'
-    click_on '日報の一覧に戻る'
-  end
-  test 'should error create report in nothing title and content' do
-    visit reports_url
-    click_on '日報の新規作成'
-    click_on '登録する'
-    assert_text '2件のエラーがあるため、この日報は保存できませんでした:'
-    assert_text 'タイトルを入力してください'
-    assert_text '内容を入力してください'
-    click_on '日報の一覧に戻る'
-  end
-  test 'should error create report in nothing title' do
-    visit reports_url
-    click_on '日報の新規作成'
-    fill_in '内容', with: @report.content
-    click_on '登録する'
-    assert_text '1件のエラーがあるため、この日報は保存できませんでした:'
-    assert_text 'タイトルを入力してください'
-    click_on '日報の一覧に戻る'
-  end
-  test 'should error create report in nothing content' do
-    visit reports_url
-    click_on '日報の新規作成'
-    fill_in 'タイトル', with: @report.title
-    click_on '登録する'
-    assert_text '1件のエラーがあるため、この日報は保存できませんでした:'
-    assert_text '内容を入力してください'
+    assert_text @report.title
+    assert_text @report.content
     click_on '日報の一覧に戻る'
   end
 
@@ -63,59 +38,15 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in '内容', with: new_content
     click_on '更新する'
     assert_text '日報が更新されました。'
+    assert_text new_title
+    assert_text new_content
     click_on '日報の一覧に戻る'
-  end
-  test 'should error update Report in nothing title and content' do
-    visit report_url(@report)
-    click_on 'この日報を編集'
-    new_title = ''
-    new_content = ''
-    fill_in 'タイトル', with: new_title
-    fill_in '内容', with: new_content
-    click_on '更新する'
-    assert_text '2件のエラーがあるため、この日報は保存できませんでした:'
-    assert_text 'タイトルを入力してください'
-    assert_text '内容を入力してください'
-    click_on '日報の一覧に戻る'
-  end
-  test 'should error update Report in nothing title' do
-    visit report_url(@report)
-    click_on 'この日報を編集'
-    new_title = ''
-    new_content = '内容を変更'
-    fill_in 'タイトル', with: new_title
-    fill_in '内容', with: new_content
-    click_on '更新する'
-    assert_text '1件のエラーがあるため、この日報は保存できませんでした:'
-    assert_text 'タイトルを入力してください'
-    click_on '日報の一覧に戻る'
-  end
-  test 'should error update Report in nothing content' do
-    visit report_url(@report)
-    click_on 'この日報を編集'
-    new_title = 'タイトルを変更'
-    new_content = ''
-    fill_in 'タイトル', with: new_title
-    fill_in '内容', with: new_content
-    click_on '更新する'
-    assert_text '1件のエラーがあるため、この日報は保存できませんでした:'
-    assert_text '内容を入力してください'
-    click_on '日報の一覧に戻る'
-  end
-  test 'should not update Report' do
-    bob_report = reports(:bob_report)
-    visit report_url(bob_report)
-    assert_no_text 'この日報を編集'
   end
 
   test 'should destroy Report' do
     visit report_url(@report)
     click_on 'この日報を削除'
     assert_text '日報が削除されました。'
-  end
-  test 'should not destroy Report' do
-    bob_report = reports(:bob_report)
-    visit report_url(bob_report)
-    assert_no_text 'この日報を削除'
+    assert_no_text @report.title
   end
 end

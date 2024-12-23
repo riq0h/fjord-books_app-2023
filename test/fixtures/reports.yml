@@ -17,3 +17,8 @@ report_id2:
   user: alice
   title: 24時間睡眠
   content: ただし夢の中で睡眠学習しているものとする。
+report_id3:
+  id: 3
+  user: alice
+  title: 48時間勉強
+  content: 生まれてから一度も寝ていない人にマウントを取られた。
