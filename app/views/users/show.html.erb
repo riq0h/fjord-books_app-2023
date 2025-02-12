@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="show-item">
+  <%= render @user %>
+</div>
+
+<nav class="page-nav">
+  <%= link_to t('views.common.back', name: User.model_name.human), users_path %>
+</nav>
+
+<nav class="page-nav">
+  <%= link_to t('views.common.back', name: Book.model_name.human), books_path %>
+</nav>
